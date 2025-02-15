@@ -55,38 +55,19 @@ return {
     vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = "[S]earch Recent Files" })
     vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
     vim.keymap.set("n", "<leader>/", function()
-      builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
-        previewer = false,
-      }))
+      builtin.current_buffer_fuzzy_find(
+        require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
+      )
     end, { desc = "[/] Fuzzily search in current buffer" })
     vim.keymap.set("n", "<leader>s/", function()
       builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
     end, { desc = "[S]earch [/] in Open Files" })
 
-    local pickers = require("telescope.pickers")
-    local finders = require("telescope.finders")
-    local conf = require("telescope.config").values
-    local actions = require("telescope.actions")
-    local action_state = require("telescope.actions.state")
-    local function theme_picker()
-      local themes = { "tokyodark", "tokyonight" }
-      pickers
-          .new({}, {
-            prompt_title = "Themes",
-            finder = finders.new_table(themes),
-            sorter = conf.generic_sorter({}),
-            attach_mappings = function(prompt_bufnr)
-              actions.select_default:replace(function()
-                local selection = action_state.get_selected_entry()
-                actions.close(prompt_bufnr)
-                vim.cmd("colorscheme " .. selection[1])
-              end)
-              return true
-            end,
-          })
-          :find()
-    end
-    vim.keymap.set("n", "<leader>st", theme_picker, { desc = "Switch Themes" })
+    vim.keymap.set(
+      "n",
+      "<leader>st",
+      ":Telescope themes<CR>",
+      { noremap = true, silent = true, desc = "Theme Switcher" }
+    )
   end,
 }
