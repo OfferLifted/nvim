@@ -36,6 +36,10 @@ return {
       map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", "n")
       map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
     end
+    local border = "rounded"
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+    vim.lsp.handlers["textDocument/signatureHelp"] =
+        vim.lsp.with(vim.lsp.handlers.signatureHelp, { border = border })
 
     mason_lspconfig.setup_handlers({
       function(server)
