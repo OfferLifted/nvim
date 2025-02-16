@@ -1,6 +1,7 @@
 local global = vim.g
 local o = vim.opt
 
+global.python3_host_prog = os.getenv("HOME") .. "/dev/nvim_python_env/.venv/bin/python3"
 global.mapleader = " "
 global.maplocalleader = " "
 
@@ -36,9 +37,9 @@ o.undofile = true
 o.cmdheight = 0
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
