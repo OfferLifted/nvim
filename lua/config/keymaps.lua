@@ -7,7 +7,7 @@ global.maplocalleader = " "
 local opts = { noremap = true, silent = true }
 
 -- Toggle insert/normal mode
-vim.keymap.set("i", "jj", "<Esc>", vim.tbl_extend("force", opts, { desc = "Exit insert mode" }))
+-- vim.keymap.set("i", "jj", "<Esc>", vim.tbl_extend("force", opts, { desc = "Exit insert mode" }))
 
 -- Save file
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", vim.tbl_extend("force", opts, { desc = "Save file" }))
