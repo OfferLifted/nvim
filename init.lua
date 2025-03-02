@@ -23,3 +23,4 @@ require("lazy").setup({
     border = "rounded",
   },
 })
+require("current-theme")

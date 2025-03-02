@@ -23,6 +23,7 @@ o.encoding = "UTF-8"
 
 o.mouse = "a"
 
+o.updatetime = 250
 o.ttimeoutlen = 300
 
 o.splitright = true
